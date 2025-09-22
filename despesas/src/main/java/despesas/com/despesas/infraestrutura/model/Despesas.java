@@ -13,4 +13,6 @@ public class Despesas {
     private Long id;
     @NotBlank
     private String descricao;
+    @NotBlank
+    private double valor;
 }
