@@ -1,10 +1,10 @@
 package despesas.com.despesas.infraestrutura.controller;
-
 import despesas.com.despesas.infraestrutura.model.Despesas;
 import despesas.com.despesas.infraestrutura.services.ServiceDespesas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,13 +15,13 @@ public class DespesasController {
     @Autowired
     private ServiceDespesas serviceDespesas;
 
-    @RequestMapping("/adicionar")
+    @PostMapping("/adicionar")
     public ResponseEntity<String> adicionar(@RequestBody Despesas despesas){
         try{
             serviceDespesas.adicionar(despesas);
             return new ResponseEntity<>("Despesa adicionada com sucesso", HttpStatus.CREATED);
         }catch (Exception e){
-            return new ResponseEntity<>("Erro ao adicionar despesa", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Erro ao adicionar despesa" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
