@@ -4,10 +4,9 @@ import despesas.com.despesas.infraestrutura.services.ServiceDespesas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/despesas")
@@ -23,5 +22,10 @@ public class DespesasController {
         }catch (Exception e){
             return new ResponseEntity<>("Erro ao adicionar despesa" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<Despesas>> listar(){
+       List<Despesas> despesas = serviceDespesas.listar();
+       return new ResponseEntity<>(despesas, HttpStatus.OK);
     }
 }
