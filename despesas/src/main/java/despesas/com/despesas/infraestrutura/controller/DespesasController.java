@@ -28,4 +28,17 @@ public class DespesasController {
        List<Despesas> despesas = serviceDespesas.listar();
        return new ResponseEntity<>(despesas, HttpStatus.OK);
     }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        if (id == null){
+            return new ResponseEntity<>("O id não pode ser nulo", HttpStatus.BAD_REQUEST);
+        }
+        try{
+            serviceDespesas.delete(id);
+            return new ResponseEntity<>("Despesa deletada com sucesso", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Erro ao deletar despesa" + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

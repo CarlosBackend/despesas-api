@@ -27,4 +27,12 @@ public class ServiceDespesas {
         }
         return despesas;
     }
+
+    public void delete(Long id){
+        List<Despesas> despesas = repositoryDespesas.findAll();
+        if(despesas.isEmpty()){
+            throw new IllegalArgumentException("Não existe despesa cadastrada com esse id");
+        }
+        repositoryDespesas.deleteById(id);
+    }
 }
