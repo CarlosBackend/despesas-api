@@ -1,5 +1,5 @@
 # API rastreador de despesas
-- O aplicativo rastreador de despesas gerencia finanças. O aplicativo permiti que os usuários adicionem, excluam e visualizem despesas. O pedido deve também fornece um resumo das despesas.
+- O aplicativo rastreador de despesas gerencia finanças. O aplicativo permite que os usuários adicione, exclua e visualizem despesas. O pedido deve também fornece um resumo das despesas.
 # Requisitos
 - O aplicativo deve ser executado a partir da linha de comando e deve ter os seguintes recursos:
 
