@@ -1,14 +1,10 @@
 package despesas.com.despesas.infraestrutura.services;
-
 import despesas.com.despesas.infraestrutura.model.Despesas;
 import despesas.com.despesas.infraestrutura.repository.RepositoryDespesas;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
