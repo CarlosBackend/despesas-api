@@ -35,4 +35,14 @@ public class ServiceDespesas {
         }
         repositoryDespesas.deleteById(id);
     }
+    public void update(Long id, Despesas novaDespesas){
+        if (novaDespesas == null){
+            throw new IllegalArgumentException("A nova despesas não pode ser nulo");
+        }
+        Despesas despesasExistente = repositoryDespesas.findById(id).orElseThrow(()
+                -> new IllegalArgumentException("Não existe despesa cadastrada com esse id"));
+        despesasExistente.setDescricao(novaDespesas.getDescricao());
+        despesasExistente.setValor(novaDespesas.getValor());
+        repositoryDespesas.save(despesasExistente);
+    }
 }

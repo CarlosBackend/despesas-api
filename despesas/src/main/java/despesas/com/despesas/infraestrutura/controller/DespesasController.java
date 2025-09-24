@@ -41,4 +41,17 @@ public class DespesasController {
             return new ResponseEntity<>("Erro ao deletar despesa" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Despesas novaDespesas){
+        if (id == null){
+            return new ResponseEntity<>("O id não pode ser nulo", HttpStatus.BAD_REQUEST);
+        }
+        try{
+            serviceDespesas.update(id, novaDespesas);
+            return new ResponseEntity<>("Despesa atualizada com sucesso", HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Erro ao atualizar despesa" + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
